@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculadora Warframe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Calculadora de Dano Crítico & Quantização</h1>
+    <p>Baseado nas mecânicas avançadas de Warframe</p>
+  </header>
+
+  <main>
+    <section id="explicacao">
+      <h2>🧠 Como funciona o dano crítico?</h2>
+      <p>
+        O multiplicador de dano crítico segue a fórmula:
+        <strong>M = 1 + T × (CD - 1)</strong><br/>
+        Onde:
+        <ul>
+          <li><strong>T</strong> = Tier Crítico (1 = amarelo, 2 = laranja, 3 = vermelho...)</li>
+          <li><strong>CD</strong> = Multiplicador de Dano Crítico da arma</li>
+        </ul>
+        <br/>
+        Com bônus de companheiro (como o mod <strong>Tenacious Bond</strong>, que fornece +1.2), a fórmula vira:
+        <strong>M = 1 + T × (CD - 1 + 1.2)</strong>
+      </p>
+    </section>
+
+    <section id="calculadora">
+      <h2>🧮 Calculadora de Dano Crítico</h2>
+      <form id="critForm">
+        <label for="tier">Tier Crítico:</label>
+        <input type="number" id="tier" min="1" value="1" />
+
+        <label for="cd">Multiplicador de Dano Crítico:</label>
+        <input type="number" step="0.1" id="cd" value="2" />
+
+        <label for="bonus">Bônus (ex: Tenacious = 1.2):</label>
+        <input type="number" step="0.1" id="bonus" value="0" />
+
+        <button type="submit">Calcular</button>
+      </form>
+      <p id="resultado"></p>
+    </section>
+
+    <section id="quantizacao">
+      <h2>🔬 Quantização Elemental e Física</h2>
+      <p>
+        Fórmulas para quantização (S = escala = dano total ÷ 16):
+        <br/><br/>
+        <strong>Quantização Elemental:</strong><br/>
+        ⬩ Frio + Toxina: arred( (90% + 60%) × dano / S ) × S<br/>
+        ⬩ Calor: arred( 90% × dano / S ) × S<br/>
+        ⬩ Perfuração: arred( 120% × base / S ) × S<br/>
+        ⬩ Gás: arred( 200% × dano / S ) × S<br/>
+        <br/>
+        <strong>Base Física:</strong><br/>
+        ⬩ Impacto: arred( valor / S ) × S<br/>
+        ⬩ Perfuração: arred( valor / S ) × S<br/>
+        ⬩ Corte: arred( valor / S ) × S<br/>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Desenvolvido por você e ChatGPT • 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
