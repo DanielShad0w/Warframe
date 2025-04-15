@@ -8,94 +8,74 @@
 </head>
 <body>
   <header>
-    <h1>Calculadora de Dano Crítico</h1>
+    <h1>Calculadora de Dano Crítico & Quantização</h1>
     <p>Baseado nas mecânicas avançadas de Warframe</p>
-    <nav>
-      <ul>
-        <li><a href="#explicacao" class="tab-button active" onclick="openTab('explicacao')">Explicação</a></li>
-        <li><a href="#calculadora" class="tab-button" onclick="openTab('calculadora')">Calculadora</a></li>
-        <li><a href="#interacoes" class="tab-button" onclick="openTab('interacoes')">Interações</a></li>
-        <li><a href="#menu" class="tab-button" onclick="toggleMenu()">Menu Interativo</a></li>
-      </ul>
-      <button id="toggleTheme">Modo Escuro</button>
-    </nav>
   </header>
 
   <main>
-    <div id="explicacao" class="tab-content active">
+    <!-- Menu de Navegação -->
+    <nav>
+      <ul>
+        <li><button class="menu-button" data-target="explicacao">🧠 Como Funciona?</button></li>
+        <li><button class="menu-button" data-target="calculadora">🧮 Calculadora de Dano Crítico</button></li>
+        <li><button class="menu-button" data-target="interacoes">⚡ Interações Especiais</button></li>
+      </ul>
+    </nav>
+
+    <!-- Conteúdo Expandido -->
+    <section id="explicacao" class="content-section">
       <h2>🧠 Como funciona o dano crítico?</h2>
       <p>
-        O multiplicador de dano crítico segue a fórmula:<br/>
+        O multiplicador de dano crítico segue a fórmula:
         <strong>M = 1 + T × (CD - 1)</strong><br/>
         Onde:
         <ul>
           <li><strong>T</strong> = Tier Crítico (1 = amarelo, 2 = laranja, 3 = vermelho...)</li>
-          <li><strong>CD</strong> = Multiplicador de Dano Crítico da arma (ex: 2x, 3x, etc.)</li>
+          <li><strong>CD</strong> = Multiplicador de Dano Crítico da arma</li>
         </ul>
-        <p>
-          A fórmula para incluir bônus de companheiro (exemplo: mod <strong>Tenacious Bond</strong> que fornece +1.2) fica da seguinte forma:<br/>
-          <strong>M = 1 + T × (CD - 1 + Bônus)</strong><br/>
-          Onde o <strong>Bônus</strong> é o valor adicional fornecido pelos mods ou efeitos especiais do jogo.
-        </p>
+        <br/>
+        Com bônus de companheiro (como o mod <strong>Tenacious Bond</strong>, que fornece +1.2), a fórmula vira:
+        <strong>M = 1 + T × (CD - 1 + 1.2)</strong>
       </p>
-    </div>
+    </section>
 
-    <div id="calculadora" class="tab-content">
+    <section id="calculadora" class="content-section">
       <h2>🧮 Calculadora de Dano Crítico</h2>
       <form id="critForm">
         <label for="tier">Tier Crítico:</label>
         <input type="number" id="tier" min="1" value="1" />
-        
+
         <label for="cd">Multiplicador de Dano Crítico:</label>
         <input type="number" step="0.1" id="cd" value="2" />
-        
+
         <label for="bonus">Bônus (ex: Tenacious = 1.2):</label>
         <input type="number" step="0.1" id="bonus" value="0" />
 
         <button type="submit">Calcular</button>
       </form>
-
       <p id="resultado"></p>
-    </div>
+    </section>
 
-    <div id="interacoes" class="tab-content">
-      <h2>🔍 Interações Especiais e Curiosidades</h2>
+    <section id="interacoes" class="content-section">
+      <h2>⚡ Interações Especiais - Curiosidades do Dano Crítico</h2>
       <p>
-        As interações especiais no dano crítico podem ser complexas e afetam diretamente o poder do multiplicador. Aqui estão alguns pontos importantes a considerar:
+        Entenda como os tiers e multiplicadores se combinam para maximizar o dano.
       </p>
       <ul>
-        <li><strong>Critérios de Bônus e Multiplicadores:</strong> O <strong>mod "Point Strike"</strong> aumenta diretamente o <strong>multiplicador de dano crítico</strong> da arma. Combinado com um Tier Crítico alto (como 3x para o vermelho), o dano pode atingir níveis exponenciais.</li>
-        <li><strong>Variação dos Tiers Críticos:</strong> Em Warframe, um Tier 1 (amarelo) dá um bônus de 1x, Tier 2 (laranja) dá 2x, e Tier 3 (vermelho) dá 3x. A fórmula para calcular é M = 1 + T × (CD - 1). Quanto maior o Tier, maior o potencial de dano crítico.</li>
-        <li><strong>Bônus de Companheiro:</strong> O mod <strong>"Tenacious Bond"</strong> aumenta o bônus de dano crítico em 1.2, o que efetivamente aumenta a eficácia dos cálculos, fazendo com que o multiplicador de dano crítico seja um pouco mais forte.</li>
-        <li><strong>Exemplo de Dano Crítico com Bonus:</strong> Se você usar uma arma com um 2x de dano crítico e aplicar um Tier 3 (vermelho) e um bônus de 1.2 de "Tenacious Bond", a fórmula seria:<br />
-          <strong>M = 1 + 3 × (2 - 1 + 1.2) = 1 + 3 × 2.2 = 1 + 6.6 = 7.6</strong><br />
-          Isso significa que o dano final será 7.6 vezes maior do que o dano base!</li>
-        <li><strong>Crítico e Variações de Arma:</strong> Diferentes armas podem ter multiplicadores de dano crítico que variam. Alguns rifles podem ter um CD base de 1.8x, enquanto outras armas, como snipers, podem ter 2x ou 3x, dependendo da arma. A interação com os Tiers Críticos é crucial.</li>
+        <li><strong>Amarelo (1x):</strong> Multiplica o dano crítico pela sua base (ex: 1x).</li>
+        <li><strong>Laranja (2x):</strong> Dobra o dano crítico (ex: 2x).</li>
+        <li><strong>Vermelho (3x):</strong> Triplica o dano crítico (ex: 3x).</li>
       </ul>
-    </div>
-
-    <!-- Menu expansível -->
-    <div id="menu" class="tab-content">
-      <h2>📜 Menu Interativo</h2>
-      <button class="accordion">Seção 1: Informações do Jogo</button>
-      <div class="panel">
-        <p>Aqui você pode encontrar detalhes sobre o sistema de dano crítico e outras mecânicas de Warframe.</p>
-      </div>
-
-      <button class="accordion">Seção 2: Estratégias de Combate</button>
-      <div class="panel">
-        <p>Discussão sobre as melhores estratégias de combate no Warframe e como otimizar seu dano.</p>
-      </div>
-
-      <button class="accordion">Seção 3: Dúvidas Comuns</button>
-      <div class="panel">
-        <p>Respostas para as perguntas mais frequentes sobre o sistema de dano crítico e builds no Warframe.</p>
-      </div>
-    </div>
+      <h3>Exemplo de Aplicação:</h3>
+      <p>
+        Se uma arma tem um multiplicador de 2x e você atinge o tier vermelho (3x), o dano total seria:
+        <strong>Dano = Base x 3</strong>.
+      </p>
+    </section>
   </main>
 
   <footer>
-    <p>Desenvolvido por você e ChatGPT • 2025</p>
+    <p>Desenvolvido por Daniel • 2025</p>
   </footer>
 
   <script src="script.js"></script>
