@@ -1,11 +1,5 @@
-// Função para alternar entre o modo claro e escuro
-const toggleThemeButton = document.getElementById('toggleTheme');
+// Função para alternar entre as abas
+function openTab(tabName) {
+  const tabs = document.querySelectorAll('.tab-content');
+  const buttons = document.query
 
-toggleThemeButton.addEventListener('click', () => {
-  document.body.classList.toggle('dark-theme');
-  if (document.body.classList.contains('dark-theme')) {
-    toggleThemeButton.innerText = 'Modo Claro';
-  } else {
-    toggleThemeButton.innerText = 'Modo Escuro';
-  }
-});
