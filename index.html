@@ -8,44 +8,22 @@
 </head>
 <body>
   <header>
-    <h1>Calculadora de Dano Crítico & Quantização</h1>
-    <p>Baseado nas mecânicas avançadas de Warframe</p>
+    <h1>Calculadora de Dano Crítico</h1>
+    <nav>
+      <button class="menu-btn" onclick="scrollToSection('calculadora')">Calculadora</button>
+      <button class="menu-btn" onclick="scrollToSection('explicacao')">Explicação</button>
+      <button class="menu-btn" onclick="toggleExpand('curiosidades')">Curiosidades</button>
+    </nav>
   </header>
 
   <main>
-    <!-- Menu de Navegação -->
-    <nav>
-      <ul>
-        <li><button class="menu-button" onclick="showSection('explicacao')">🧠 Como Funciona?</button></li>
-        <li><button class="menu-button" onclick="showSection('calculadora')">🧮 Calculadora de Dano Crítico</button></li>
-        <li><button class="menu-button" onclick="showSection('interacoes')">⚡ Interações Especiais</button></li>
-      </ul>
-    </nav>
-
-    <!-- Conteúdo Expandido -->
-    <section id="explicacao" class="content-section">
-      <h2>🧠 Como funciona o dano crítico?</h2>
-      <p>
-        O multiplicador de dano crítico segue a fórmula:
-        <strong>M = 1 + T × (CD - 1)</strong><br/>
-        Onde:
-        <ul>
-          <li><strong>T</strong> = Tier Crítico (1 = amarelo, 2 = laranja, 3 = vermelho...)</li>
-          <li><strong>CD</strong> = Multiplicador de Dano Crítico da arma</li>
-        </ul>
-        <br/>
-        Com bônus de companheiro (como o mod <strong>Tenacious Bond</strong>, que fornece +1.2), a fórmula vira:
-        <strong>M = 1 + T × (CD - 1 + 1.2)</strong>
-      </p>
-    </section>
-
-    <section id="calculadora" class="content-section">
+    <section id="calculadora">
       <h2>🧮 Calculadora de Dano Crítico</h2>
       <form id="critForm">
         <label for="tier">Tier Crítico:</label>
         <input type="number" id="tier" min="1" value="1" />
 
-        <label for="cd">Multiplicador de Dano Crítico:</label>
+        <label for="cd">Multiplicador de Dano Crítico (CD):</label>
         <input type="number" step="0.1" id="cd" value="2" />
 
         <label for="bonus">Bônus (ex: Tenacious = 1.2):</label>
@@ -56,21 +34,39 @@
       <p id="resultado"></p>
     </section>
 
-    <section id="interacoes" class="content-section">
-      <h2>⚡ Interações Especiais - Curiosidades do Dano Crítico</h2>
+    <section id="explicacao">
+      <h2>📘 Explicação Detalhada</h2>
       <p>
-        Entenda como os tiers e multiplicadores se combinam para maximizar o dano.
+        O dano crítico em Warframe é calculado pela fórmula:<br/>
+        <strong>M = 1 + T × (CD - 1 + bônus)</strong><br/><br/>
+        Onde:
+        <ul>
+          <li><strong>T</strong> = Tier crítico: 1 para amarelo, 2 para laranja, 3 para vermelho, etc.</li>
+          <li><strong>CD</strong> = Multiplicador de crítico da arma (por ex: 2.0x)</li>
+          <li><strong>Bônus</strong> = Qualquer bônus adicional (como mods, arcanes, companheiros)</li>
+        </ul>
+        <br/>
+        O número final representa o multiplicador de dano real que será aplicado sobre o dano base.
       </p>
-      <ul>
-        <li><strong>Amarelo (1x):</strong> Multiplica o dano crítico pela sua base (ex: 1x).</li>
-        <li><strong>Laranja (2x):</strong> Dobra o dano crítico (ex: 2x).</li>
-        <li><strong>Vermelho (3x):</strong> Triplica o dano crítico (ex: 3x).</li>
-      </ul>
-      <h3>Exemplo de Aplicação:</h3>
-      <p>
-        Se uma arma tem um multiplicador de 2x e você atinge o tier vermelho (3x), o dano total seria:
-        <strong>Dano = Base x 3</strong>.
-      </p>
+    </section>
+
+    <section id="curiosidades" class="expandable collapsed">
+      <h2>🔍 Curiosidades e Segredos</h2>
+      <div class="expand-content">
+        <ul>
+          <li><strong>Tier 1</strong> (Amarelo): Aplica CD normal (ex: 2x).</li>
+          <li><strong>Tier 2</strong> (Laranja): Duplica o dano crítico total (ex: 4x se CD = 2x).</li>
+          <li><strong>Tier 3</strong> (Vermelho): Triplica o dano crítico (ex: 6x se CD = 2x).</li>
+          <li><strong>Tier 4+</strong>: Continua escalando usando a fórmula.</li>
+          <li>O dano nunca é simplesmente CD × Tier, e sim cumulativo com o dano base (por isso usamos M = 1 + T × (CD - 1))</li>
+          <li>Críticos acima de Tier 3 são raros, mas possíveis com buffs e armas certas.</li>
+        </ul>
+        <p><strong>Exemplo:</strong> Uma arma com 100 de dano base, 2x de crítico e um Tier 3 crítico:</p>
+        <pre>
+M = 1 + 3 × (2 - 1) = 1 + 3 = 4
+Dano final = 100 × 4 = 400
+        </pre>
+      </div>
     </section>
   </main>
 
