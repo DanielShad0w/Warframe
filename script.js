@@ -1,18 +1,17 @@
 // Função para alternar entre as seções
-document.querySelectorAll('.menu-button').forEach(button => {
-  button.addEventListener('click', () => {
-    // Esconde todas as seções
-    document.querySelectorAll('.content-section').forEach(section => {
-      section.style.display = 'none';
-    });
-
-    // Mostra a seção clicada
-    const target = document.getElementById(button.getAttribute('data-target'));
-    if (target) {
-      target.style.display = 'block';
-    }
+function showSection(sectionId) {
+  // Esconde todas as seções
+  const sections = document.querySelectorAll('.content-section');
+  sections.forEach(section => {
+    section.style.display = 'none';
   });
-});
+
+  // Mostra a seção que foi clicada
+  const targetSection = document.getElementById(sectionId);
+  if (targetSection) {
+    targetSection.style.display = 'block';
+  }
+}
 
 // Calculadora de Dano Crítico
 document.getElementById('critForm').addEventListener('submit', function (event) {
@@ -30,4 +29,4 @@ document.getElementById('critForm').addEventListener('submit', function (event) 
 });
 
 // Exibe a primeira seção como padrão
-document.getElementById('explicacao').style.display = 'block';
+showSection('explicacao');
