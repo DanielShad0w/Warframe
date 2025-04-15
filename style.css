@@ -30,11 +30,17 @@ header nav ul li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 header nav ul li a:hover {
-  color: #00bcd4;
-  text-decoration: underline;
+  background-color: #444;
+}
+
+header nav ul li a.active {
+  background-color: #00bcd4; /* Cor da aba ativa */
 }
 
 button {
@@ -51,19 +57,17 @@ button:hover {
   background-color: #0097a7;
 }
 
-/* Seções */
-section {
-  margin: 20px;
-  padding: 20px;
+/* Estilos das abas */
+.tab-content {
+  display: none;
   background-color: #1e1e1e; /* Cor de fundo para seções */
+  padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-section:hover {
-  transform: scale(1.02);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+.tab-content.active {
+  display: block;
 }
 
 h2 {
