@@ -12,9 +12,9 @@
     <p>Baseado nas mecânicas avançadas de Warframe</p>
     <nav>
       <ul>
-        <li><a href="#explicacao">Explicação do Dano Crítico</a></li>
-        <li><a href="#calculadora">Calculadora</a></li>
-        <li><a href="#interacoes">Interações Especiais</a></li>
+        <li><a href="#explicacao" class="tab-button active" onclick="openTab('explicacao')">Explicação</a></li>
+        <li><a href="#calculadora" class="tab-button" onclick="openTab('calculadora')">Calculadora</a></li>
+        <li><a href="#interacoes" class="tab-button" onclick="openTab('interacoes')">Interações</a></li>
       </ul>
       <!-- Botão para alternar entre modo claro e escuro -->
       <button id="toggleTheme">Modo Escuro</button>
@@ -22,7 +22,7 @@
   </header>
 
   <main>
-    <section id="explicacao">
+    <div id="explicacao" class="tab-content active">
       <h2>🧠 Como funciona o dano crítico?</h2>
       <p>
         O multiplicador de dano crítico segue a fórmula:<br/>
@@ -38,9 +38,9 @@
           Onde o <strong>Bônus</strong> é o valor adicional fornecido pelos mods ou efeitos especiais do jogo.
         </p>
       </p>
-    </section>
+    </div>
 
-    <section id="calculadora">
+    <div id="calculadora" class="tab-content">
       <h2>🧮 Calculadora de Dano Crítico</h2>
       <form id="critForm">
         <label for="tier">Tier Crítico:</label>
@@ -56,9 +56,9 @@
       </form>
 
       <p id="resultado"></p>
-    </section>
+    </div>
 
-    <section id="interacoes">
+    <div id="interacoes" class="tab-content">
       <h2>🔍 Interações Especiais e Curiosidades</h2>
       <p>
         As interações especiais no dano crítico podem ser complexas e afetam diretamente o poder do multiplicador. Aqui estão alguns pontos importantes a considerar:
@@ -72,15 +72,14 @@
           Isso significa que o dano final será 7.6 vezes maior do que o dano base!</li>
         <li><strong>Crítico e Variações de Arma:</strong> Diferentes armas podem ter multiplicadores de dano crítico que variam. Alguns rifles podem ter um CD base de 1.8x, enquanto outras armas, como snipers, podem ter 2x ou 3x, dependendo da arma. A interação com os Tiers Críticos é crucial.</li>
       </ul>
-    </section>
+    </div>
 
   </main>
 
   <footer>
-    <p>Desenvolvido por você e ChatGPT • 2025</p>
+    <p>Desenvolvido por Daniel • 2025</p>
   </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
-
