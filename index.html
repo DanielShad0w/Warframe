@@ -8,61 +8,49 @@
 </head>
 <body>
   <header>
-    <h1>Calculadora de Dano Crítico & Quantização</h1>
+    <h1>Calculadora de Dano Crítico</h1>
     <p>Baseado nas mecânicas avançadas de Warframe</p>
   </header>
 
   <main>
+    <!-- Explicação sobre Dano Crítico -->
     <section id="explicacao">
       <h2>🧠 Como funciona o dano crítico?</h2>
       <p>
-        O multiplicador de dano crítico segue a fórmula:
+        O multiplicador de dano crítico segue a fórmula:<br/>
         <strong>M = 1 + T × (CD - 1)</strong><br/>
         Onde:
         <ul>
           <li><strong>T</strong> = Tier Crítico (1 = amarelo, 2 = laranja, 3 = vermelho...)</li>
-          <li><strong>CD</strong> = Multiplicador de Dano Crítico da arma</li>
+          <li><strong>CD</strong> = Multiplicador de Dano Crítico da arma (ex: 2x, 3x, etc.)</li>
         </ul>
-        <br/>
-        Com bônus de companheiro (como o mod <strong>Tenacious Bond</strong>, que fornece +1.2), a fórmula vira:
-        <strong>M = 1 + T × (CD - 1 + 1.2)</strong>
+        <p>
+          A fórmula para incluir bônus de companheiro (exemplo: mod <strong>Tenacious Bond</strong> que fornece +1.2) fica da seguinte forma:<br/>
+          <strong>M = 1 + T × (CD - 1 + Bônus)</strong><br/>
+          Onde o <strong>Bônus</strong> é o valor adicional fornecido pelos mods ou efeitos especiais do jogo.
+        </p>
       </p>
     </section>
 
+    <!-- Calculadora de Dano Crítico -->
     <section id="calculadora">
       <h2>🧮 Calculadora de Dano Crítico</h2>
       <form id="critForm">
         <label for="tier">Tier Crítico:</label>
         <input type="number" id="tier" min="1" value="1" />
-
+        
         <label for="cd">Multiplicador de Dano Crítico:</label>
         <input type="number" step="0.1" id="cd" value="2" />
-
+        
         <label for="bonus">Bônus (ex: Tenacious = 1.2):</label>
         <input type="number" step="0.1" id="bonus" value="0" />
 
         <button type="submit">Calcular</button>
       </form>
+
       <p id="resultado"></p>
     </section>
 
-    <section id="quantizacao">
-      <h2>🔬 Quantização Elemental e Física</h2>
-      <p>
-        Fórmulas para quantização (S = escala = dano total ÷ 16):
-        <br/><br/>
-        <strong>Quantização Elemental:</strong><br/>
-        ⬩ Frio + Toxina: arred( (90% + 60%) × dano / S ) × S<br/>
-        ⬩ Calor: arred( 90% × dano / S ) × S<br/>
-        ⬩ Perfuração: arred( 120% × base / S ) × S<br/>
-        ⬩ Gás: arred( 200% × dano / S ) × S<br/>
-        <br/>
-        <strong>Base Física:</strong><br/>
-        ⬩ Impacto: arred( valor / S ) × S<br/>
-        ⬩ Perfuração: arred( valor / S ) × S<br/>
-        ⬩ Corte: arred( valor / S ) × S<br/>
-      </p>
-    </section>
   </main>
 
   <footer>
@@ -72,3 +60,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
